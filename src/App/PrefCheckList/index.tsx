@@ -1,13 +1,5 @@
 import styled from 'styled-components'
 
-type Props = {
-  prefectures: {
-    prefCode: number
-    prefName: string
-  }[]
-  onChange: (name: string, prefName: number, check: boolean) => void
-}
-
 const PrefName = styled.label`
   display: block;
   cursor: pointer;
@@ -23,6 +15,14 @@ const PrefItem = styled.div`
   display: flex;
   padding: 10px;
 `
+
+type Props = {
+  prefectures: {
+    prefCode: number
+    prefName: string
+  }[]
+  onChange: (name: string, prefName: number, check: boolean) => void
+}
 
 // 都道府県一覧のチェックボックスを表示するコンポーネント
 const PrefCheckList = ({ prefectures, onChange }: Props) => {

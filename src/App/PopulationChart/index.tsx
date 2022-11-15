@@ -2,16 +2,16 @@ import styled from 'styled-components'
 import Highcharts from 'highcharts'
 import HighchartsReact from 'highcharts-react-official'
 
+const Charts = styled.div`
+  padding: 12px;
+`
+
 type Props = {
   populationdata: {
     prefName: string
     data: { year: number; value: number }[]
   }[]
 }
-
-const Charts = styled.div`
-  padding: 12px;
-`
 
 const PopulationChart = ({ populationdata }: Props) => {
   const series: Highcharts.SeriesOptionsType[] = []
