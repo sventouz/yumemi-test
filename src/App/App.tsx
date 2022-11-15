@@ -24,10 +24,6 @@ const Main = () => {
 
   useEffect(() => {
     // 都道府県一覧を取得する
-
-    console.log(import.meta.env.VITE_API_SERVER_ENDPOINT)
-    console.log(import.meta.env.VITE_API_KEY)
-
     axios
       .get('https://opendata.resas-portal.go.jp/api/v1/prefectures', {
         headers: { 'X-API-KEY': import.meta.env.VITE_API_KEY },
