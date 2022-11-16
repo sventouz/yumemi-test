@@ -5,8 +5,11 @@ import PrefCheckList from './PrefCheckList'
 import PopulationChart from './PopulationChart'
 
 const Subtitles = styled.h2`
-  font-size: 16px;
+  font-size: 18px;
   margin-left: 15px;
+  border-left: 5px solid red;
+  border-bottom: 1px solid red;
+  padding-left: 5px;
 `
 
 const Main = () => {
@@ -87,15 +90,19 @@ const Main = () => {
 
   return (
     <main>
-      <Subtitles>都道府県</Subtitles>
-      {prefectures && (
-        <PrefCheckList
-          prefectures={prefectures.result}
-          onChange={handleClickCheck}
-        />
-      )}
-      <Subtitles>人口推移グラフ</Subtitles>
-      <PopulationChart populationdata={prefPopulation} />
+      <section>
+        <Subtitles>都道府県</Subtitles>
+        {prefectures && (
+          <PrefCheckList
+            prefectures={prefectures.result}
+            onChange={handleClickCheck}
+          />
+        )}
+      </section>
+      <section>
+        <Subtitles>人口推移グラフ</Subtitles>
+        <PopulationChart populationdata={prefPopulation} />
+      </section>
     </main>
   )
 }
