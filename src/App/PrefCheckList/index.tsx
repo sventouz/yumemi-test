@@ -9,6 +9,7 @@ const PrefList = styled.div`
   display: flex;
   flex-wrap: wrap;
   align-items: center;
+  font-size: 14px;
 `
 
 const PrefItem = styled.div`

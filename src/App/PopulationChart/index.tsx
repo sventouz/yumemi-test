@@ -3,6 +3,7 @@ import Highcharts from 'highcharts'
 import HighchartsReact from 'highcharts-react-official'
 
 const Charts = styled.div`
+  font-family: Helvetica, Arial, sans-serif;
   padding: 12px;
 `
 
