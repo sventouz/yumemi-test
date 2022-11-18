@@ -12,7 +12,7 @@ const Subtitles = styled.h2`
   padding-left: 5px;
 `
 
-const Main = () => {
+const App = () => {
   const [prefectures, setPreFectures] = useState<{
     message: null
     result: {
@@ -71,6 +71,8 @@ const Main = () => {
             data: results.data.result.data[0].data,
           })
 
+          console.log(c_prefPopulation)
+
           setPrefPopulation(c_prefPopulation)
         })
         .catch((error) => {
@@ -91,7 +93,7 @@ const Main = () => {
   return (
     <main>
       <section>
-        <Subtitles>都道府県</Subtitles>
+        <Subtitles data-testid='prefectureTitle'>都道府県</Subtitles>
         {prefectures && (
           <PrefCheckList
             prefectures={prefectures.result}
@@ -107,4 +109,4 @@ const Main = () => {
   )
 }
 
-export default Main
+export default App
