@@ -26,7 +26,6 @@ const App = () => {
   >([])
 
   useEffect(() => {
-    // 都道府県一覧を取得する
     axios
       .get('https://opendata.resas-portal.go.jp/api/v1/prefectures', {
         headers: { 'X-API-KEY': import.meta.env.VITE_API_KEY },
@@ -39,7 +38,6 @@ const App = () => {
       })
   }, [])
 
-  // チェックボックスをクリックした際の処理
   const handleClickCheck = (
     prefName: string,
     prefCode: number,
@@ -47,7 +45,6 @@ const App = () => {
   ) => {
     const c_prefPopulation = prefPopulation.slice()
 
-    // チェックをつけた処理
     if (check) {
       if (
         c_prefPopulation.findIndex((value) => value.prefName === prefName) !==
@@ -71,16 +68,12 @@ const App = () => {
             data: results.data.result.data[0].data,
           })
 
-          console.log(c_prefPopulation)
-
           setPrefPopulation(c_prefPopulation)
         })
         .catch((error) => {
           throw error
         })
-    }
-    // チェックを外した処理
-    else {
+    } else {
       const deleteIndex = c_prefPopulation.findIndex(
         (value) => value.prefName === prefName,
       )
