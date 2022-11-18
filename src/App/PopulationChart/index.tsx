@@ -1,11 +1,26 @@
-import styled from 'styled-components'
-import Highcharts from 'highcharts'
-import HighchartsReact from 'highcharts-react-official'
+import {
+  Chart as ChartJS,
+  CategoryScale,
+  LinearScale,
+  PointElement,
+  LineElement,
+  Title,
+  Tooltip,
+  Legend,
+  Colors,
+} from 'chart.js'
+import { Line } from 'react-chartjs-2'
 
-const Charts = styled.div`
-  font-family: Helvetica, Arial, sans-serif;
-  padding: 12px;
-`
+ChartJS.register(
+  CategoryScale,
+  LinearScale,
+  PointElement,
+  LineElement,
+  Title,
+  Tooltip,
+  Legend,
+  Colors,
+)
 
 type Props = {
   populationdata: {
@@ -15,68 +30,61 @@ type Props = {
 }
 
 const PopulationChart = ({ populationdata }: Props) => {
-  const series: Highcharts.SeriesOptionsType[] = []
+  const options = {
+    responsive: true,
+    plugins: {
+      title: {
+        display: true,
+        text: 'グラフタイトル',
+      },
+    },
+  }
+
+  const dataAll = []
   const categories = []
 
   for (const p of populationdata) {
     const data = []
-
     for (const pData of p.data) {
       data.push(pData.value)
       categories.push(String(pData.year))
     }
-
-    series.push({
-      type: 'line',
-      name: p.prefName,
+    dataAll.push({
+      label: p.prefName,
       data: data,
     })
   }
 
-  const options: Highcharts.Options = {
-    chart: {
-      backgroundColor: '#eee',
-    },
-    title: {
-      text: '総人口推移グラフ',
-    },
-    xAxis: {
-      title: {
-        text: '年度',
-      },
-      categories: categories,
-    },
-    yAxis: {
-      title: {
-        text: '総人口（万人）',
-      },
-    },
-    responsive: {
-      rules: [
-        {
-          condition: {
-            maxWidth: 500,
-          },
-          chartOptions: {
-            legend: {
-              layout: 'horizontal',
-              align: 'center',
-              verticalAlign: 'bottom',
-            },
-          },
-        },
-      ],
-    },
-    series:
-      series.length === 0
-        ? [{ type: 'line', name: '都道府県名', data: [] }]
-        : series,
+  const labels = [
+    '1960',
+    '1965',
+    '1970',
+    '1975',
+    '1980',
+    '1985',
+    '1990',
+    '1995',
+    '2000',
+    '2005',
+    '2010',
+    '2015',
+    '2020',
+    '2025',
+    '2030',
+    '2035',
+    '2040',
+    '2045',
+  ]
+
+  const data = {
+    labels,
+    datasets: dataAll,
   }
 
   return (
-    <Charts>
-      <HighchartsReact highcharts={Highcharts} options={options} />
-    </Charts>
+    <>
+      <Line options={options} data={data} />
+    </>
   )
 }
 
