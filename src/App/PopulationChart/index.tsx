@@ -1,3 +1,4 @@
+import { colors } from '../Data/colorData'
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -29,6 +30,12 @@ type Props = {
   }[]
 }
 
+type Data = {
+  label: string
+  data: number[]
+  borderColor: string
+}
+
 const PopulationChart = ({ populationdata }: Props) => {
   const options = {
     responsive: true,
@@ -40,10 +47,10 @@ const PopulationChart = ({ populationdata }: Props) => {
     },
   }
 
-  const dataAll = []
+  const dataAll: Data[] = []
   const categories = []
 
-  for (const p of populationdata) {
+  populationdata.forEach((p, i) => {
     const data = []
     for (const pData of p.data) {
       data.push(pData.value)
@@ -52,8 +59,9 @@ const PopulationChart = ({ populationdata }: Props) => {
     dataAll.push({
       label: p.prefName,
       data: data,
+      borderColor: colors[i],
     })
-  }
+  })
 
   const labels = [
     '1960',
