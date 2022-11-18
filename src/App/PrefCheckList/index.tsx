@@ -25,7 +25,6 @@ type Props = {
   onChange: (name: string, prefName: number, check: boolean) => void
 }
 
-// 都道府県一覧のチェックボックスを表示するコンポーネント
 const PrefCheckList = ({ prefectures, onChange }: Props) => {
   return (
     <>
@@ -33,8 +32,11 @@ const PrefCheckList = ({ prefectures, onChange }: Props) => {
         {prefectures.map((prefecture) => (
           <PrefItem key={prefecture.prefName}>
             <input
+              data-testid='dummyCheckBox'
               type='checkbox'
               name='Prefecture name'
+              className='dummyOnChange'
+              data-name={prefecture.prefName}
               onChange={(event) =>
                 onChange(
                   prefecture.prefName,
