@@ -35,8 +35,6 @@ const PrefCheckList = ({ prefectures, onChange }: Props) => {
               data-testid='dummyCheckBox'
               type='checkbox'
               name='Prefecture name'
-              className='dummyOnChange'
-              data-name={prefecture.prefName}
               onChange={(event) =>
                 onChange(
                   prefecture.prefName,
