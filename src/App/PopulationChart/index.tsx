@@ -48,13 +48,13 @@ const PopulationChart = ({ populationdata }: Props) => {
   }
 
   const dataAll: Data[] = []
-  const categories = []
+  const labels: string[] = []
 
   populationdata.forEach((p, i) => {
     const data = []
     for (const pData of p.data) {
       data.push(pData.value)
-      categories.push(String(pData.year))
+      labels.push(String(pData.year))
     }
     dataAll.push({
       label: p.prefName,
@@ -62,27 +62,6 @@ const PopulationChart = ({ populationdata }: Props) => {
       borderColor: colors[i],
     })
   })
-
-  const labels = [
-    '1960',
-    '1965',
-    '1970',
-    '1975',
-    '1980',
-    '1985',
-    '1990',
-    '1995',
-    '2000',
-    '2005',
-    '2010',
-    '2015',
-    '2020',
-    '2025',
-    '2030',
-    '2035',
-    '2040',
-    '2045',
-  ]
 
   const data = {
     labels,
