@@ -48,10 +48,11 @@ const PopulationChart = ({ populationdata }: Props) => {
   }
 
   const dataAll: Data[] = []
-  const labels: string[] = []
+  let labels: string[] = []
 
   populationdata.forEach((p, i) => {
     const data = []
+    labels = []
     for (const pData of p.data) {
       data.push(pData.value)
       labels.push(String(pData.year))
